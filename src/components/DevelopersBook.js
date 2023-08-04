@@ -10,7 +10,7 @@ const  DevelopersBook = () => {
         <img src={cleanCode} alt='clean code'/>
         <p>Clean Code</p>
       </div>
-
+      
     </>
   );
 }
