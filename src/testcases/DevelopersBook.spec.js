@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import DevelopersBook from '../components/DevelopersBook';
 import { TestConstants } from '../constants/TestConstants';
-import cleanCode from '../Images/cleanCode.jpg';
 
 describe('Developers Book works fine when', () => {
 
@@ -14,19 +13,18 @@ describe('Developers Book works fine when', () => {
     expect(header.textContent).toBe(TestConstants.HEADER);
   });
 
-  it('displays img with correct alt text ' , () => {
-    const bookAlt = screen.getByRole('img');
-    expect(bookAlt).toHaveAttribute('alt','clean code');
+  it('displays the count of books matches the number of books', () => {
+    const books = screen.getAllByTestId('book');
+    expect(books).toHaveLength(TestConstants.COUNT_OF_BOOKS_WITH_UNIQUE_TITLES);
   });
 
-  it('displays img with correct path ' , () => {
-    const bookImg = screen.getByRole('img');
-    expect(bookImg).toHaveAttribute('src',cleanCode);
+  it('displays correct image of book', () => {
+    const books = screen.getAllByTestId('book');
+    books.forEach((book,index) => {
+      const bookElementImg = books[index];
+      const bookImg = bookElementImg.querySelector('img');
+      expect(bookImg).toHaveAttribute('src',book.imgUrl);
+    });
   });
 
-  it('displays img with correct name of book ' , () => {
-    const bookName = screen.getByText('Clean Code');
-    expect(bookName).toBeDefined();
-  });
- 
 });
