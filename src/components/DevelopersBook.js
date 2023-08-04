@@ -1,4 +1,4 @@
-import '../src/DevelopersBook.css';
+import '../styles/DevelopersBook.css';
 
 const  DevelopersBook = () => {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import DevelopersBook from './DevelopersBook';
+import DevelopersBook from './components/DevelopersBook';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
