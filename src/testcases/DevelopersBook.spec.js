@@ -43,4 +43,12 @@ describe('Developers Book works fine when', () => {
     });
   });
 
+  it("display correct price of each book", () => {
+    listOfBooks.forEach((book) => {
+      const bookPrice = screen.getByTestId(`bookPrice${book.id}`);
+      const bookPriceValue = bookPrice.textContent;
+      expect(bookPriceValue).toBe(book.price);
+    });
+  });
+
 });

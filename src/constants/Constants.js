@@ -12,7 +12,8 @@ export const Constants = {
     BOOK_TITLE_CLEAN_CODER : 'The Clean coder',
     BOOK_TITLE_CLEAN_ARCHITECTURE : 'Clean Architecture',
     BOOK_TITLE_TDD : 'TDD by example',
-    BOOK_TITLE_LEGACY_CODE : 'Working effectively with legacy Code'
+    BOOK_TITLE_LEGACY_CODE : 'Working effectively with legacy Code',
+    PRICE_OF_EACH_BOOK : '50 Euro'
 };
 
 export const listOfBooks = [
@@ -20,29 +21,34 @@ export const listOfBooks = [
         id:1, 
         title:`${Constants.BOOK_TITLE_CLEAN_CODE}`, 
         imgUrl:`${cleanCode}`, 
+        price:`${Constants.PRICE_OF_EACH_BOOK}`
     },
 
     {
         id:2, 
         title:`${Constants.BOOK_TITLE_CLEAN_CODER}`, 
         imgUrl:`${cleanCoder}`, 
+        price:`${Constants.PRICE_OF_EACH_BOOK}`
     }, 
 
     {
         id:3, 
         title:`${Constants.BOOK_TITLE_CLEAN_ARCHITECTURE}`, 
         imgUrl:`${cleanArchitecture}`, 
+        price:`${Constants.PRICE_OF_EACH_BOOK}`
     }, 
 
     {
         id:4, 
         title:`${Constants.BOOK_TITLE_TDD}`, 
         imgUrl:`${tdd}`, 
+        price:`${Constants.PRICE_OF_EACH_BOOK}`
     },
 
     {
         id:5, 
         title:`${Constants.BOOK_TITLE_LEGACY_CODE}`, 
         imgUrl:`${legacyCoder}`, 
+        price:`${Constants.PRICE_OF_EACH_BOOK}`
     }
 ]
