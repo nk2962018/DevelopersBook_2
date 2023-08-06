@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import DevelopersBook from '../components/DevelopersBook';
-import { TestConstants } from '../constants/TestConstants';
+import { TestConstants, listOfBooks} from '../constants/TestConstants';
 
 describe('Developers Book works fine when', () => {
 
@@ -32,6 +32,14 @@ describe('Developers Book works fine when', () => {
     books.forEach((book,index) => {
       const addToCartButton = books[index].querySelector('.addToCart');
       expect(addToCartButton.textContent).toBe(TestConstants.ADD_TO_CART_BUTTON_TEXT);
+    });
+  });
+
+  it("display correct name of each book", () => {
+    listOfBooks.forEach((book) => {
+      const bookTitle = screen.getByTestId(`bookTitle${book.id}`);
+      const bookTitleValue = bookTitle.textContent;
+      expect(bookTitleValue).toBe(book.title);
     });
   });
 

@@ -24,7 +24,7 @@ export const listOfBooks = [
 
     {   
         id:2, 
-        title:`${TestConstants.BOOK_TITLE_CLEAN_CODE}`, 
+        title:`${TestConstants.BOOK_TITLE_CLEAN_CODER}`, 
         imgUrl:`${cleanCoder}`, 
     }, 
 

@@ -7,7 +7,7 @@ const  DevelopersBook = () => {
     return books.map(book => 
       <div className='book' data-testid='book'>
         <img src={book.imgUrl} alt={book.title}/>
-        <p>{book.title}</p>
+        <p data-testid={`bookTitle${book.id}`}>{book.title}</p>
         <button className='addToCart'>{Constants.ADD_TO_CART_BUTTON_TEXT}</button>
       </div>
     )
