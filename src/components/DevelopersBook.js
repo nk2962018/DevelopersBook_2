@@ -6,7 +6,7 @@ const  DevelopersBook = () => {
   const displayListOfAllBooks = (books) => {
     return books.map(book => 
       <div className='book' data-testid='book'>
-        <img src={book.imgUrl} alt={book.title}/>
+        <img src={book.imgUrl} alt={book.title} data-testid={`bookImg${book.id}`}/>
         <p data-testid={`bookTitle${book.id}`}>{book.title}</p>
         <p data-testid={`bookPrice${book.id}`}>{book.price}</p>
         <button className='addToCart'>{Constants.ADD_TO_CART_BUTTON_TEXT}</button>

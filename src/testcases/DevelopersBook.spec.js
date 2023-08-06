@@ -51,4 +51,12 @@ describe('Developers Book works fine when', () => {
     });
   });
 
+  it("display correct image alt name of each book", () => {
+    listOfBooks.forEach((book) => {
+      const bookImage = screen.getByTestId(`bookImg${book.id}`);
+      const alt = bookImage.getAttribute("alt");
+      expect(alt).toBe(book.title);
+    });
+  });
+
 });
