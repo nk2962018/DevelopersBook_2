@@ -27,4 +27,12 @@ describe('Developers Book works fine when', () => {
     });
   });
 
+  it('displays correct name  of button', () => {
+    const books = screen.getAllByTestId('book');
+    books.forEach((book,index) => {
+      const addToCartButton = books[index].querySelector('.addToCart');
+      expect(addToCartButton.textContent).toBe(TestConstants.ADD_TO_CART_BUTTON_TEXT);
+    });
+  });
+
 });

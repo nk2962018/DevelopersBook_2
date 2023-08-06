@@ -6,7 +6,8 @@ import legacyCoder from '../Images/legacycode.jpg';
 
 export const Constants = {
     HEADER : 'Developers Book',
-    COUNT_OF_BOOKS_WITH_UNIQUE_TITLES : 5
+    COUNT_OF_BOOKS_WITH_UNIQUE_TITLES : 5,
+    ADD_TO_CART_BUTTON_TEXT : 'Add to Cart'
 };
 
 export const listOfBooks = [
