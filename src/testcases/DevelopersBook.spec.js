@@ -86,6 +86,15 @@ describe('Cart works fine when', () => {
         expect(bookTitleText).toBe(`Book Title : ${book.title}`)
     });
   });
+
+  it('displays correct price of book added to cart', () => {
+    render(<Cart cartTestId='cart' cartItems={listOfBooks}/>)
+    listOfBooks.forEach(book =>{
+        const bookPrice = screen.getByTestId(`bookPrice${book.id}`);
+        const bookPriceValue = bookPrice.textContent
+        expect(bookPriceValue).toBe(`Price : ${book.price}`)
+    });
+  });
   
 });
 

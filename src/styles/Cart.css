@@ -19,6 +19,6 @@
     height: 80px;  
 }
 
-.bookTitle{
+.bookTitle, .bookPrice{
     font-weight: bold;
 }

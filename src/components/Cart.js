@@ -7,8 +7,9 @@ const Cart = ({cartTestId, cartItems}) => {
             {
                 cartItems?.map(item => (
                     <div key={item.id} className='cartItem'>
-                         <img src={item.imgUrl} alt={item.title} data-testid={`bookImg${item.id}`}/>
+                        <img src={item.imgUrl} alt={item.title} data-testid={`bookImg${item.id}`}/>
                         <p  data-testid={`bookTitle${item.id}`}><span className='bookTitle'>Book Title : </span>{item.title}</p>
+                        <p  data-testid={`bookPrice${item.id}`}><span className='bookPrice'>Price : </span>{item.price}</p>
                     </div>
                 ))
             }

@@ -28,4 +28,13 @@ describe('Cart works fine when', () => {
         });
     });
 
+    it('displays correct price of book added to cart', () => {
+        render(<Cart cartTestId='cart' cartItems={mockCartItems}/>)
+        mockCartItems.forEach(book =>{
+            const bookPrice = screen.getByTestId(`bookPrice${book.id}`);
+            const bookPriceValue = bookPrice.textContent
+            expect(bookPriceValue).toBe(`Price : ${book.price}`)
+        });
+    });
+
 });

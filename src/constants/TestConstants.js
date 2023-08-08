@@ -61,12 +61,14 @@ export const mockCartItems =[
     {
         id:1,
         title:'Book 1',
-        imgUrl:`${legacyCoder}`
+        imgUrl:`${legacyCoder}`, 
+        price:'10'
     },
 
     {
         id:2,
         title:'Book 2',
-        imgUrl:`${tdd}`
+        imgUrl:`${tdd}`, 
+        price:'10'
     }
 ]
