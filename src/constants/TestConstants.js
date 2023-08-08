@@ -52,3 +52,7 @@ export const listOfBooks = [
         price:`${TestConstants.PRICE_OF_EACH_BOOK}`
     }
 ]
+
+export const  mockCartHeader = {
+        CART_HEADER : 'Your Cart'
+}

@@ -1,6 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import DevelopersBook from '../components/DevelopersBook';
 import { TestConstants, listOfBooks} from '../constants/TestConstants';
+import Cart from '../components/Cart';
+import { Constants } from '../constants/Constants';
 
 describe('Developers Book works fine when', () => {
     let books;
@@ -55,6 +57,17 @@ describe('Developers Book works fine when', () => {
       const alt = bookImage.getAttribute('alt');
       expect(alt).toBe(book.title);
     });
+  });
+
+});
+
+
+describe('Cart works fine when', () => {
+  
+  it('displays correct cart header', () => {
+    render(<Cart cartTestId='cart'/>)
+    const cartHeader = screen.getByTestId('cart');
+    expect(cartHeader.textContent).toBe(Constants.CART_HEADER);
   });
 
 });

@@ -1,0 +1,9 @@
+.cart{
+    background-color: black;
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 2px;
+    font-size: 1.2rem;
+}

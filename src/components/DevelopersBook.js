@@ -1,5 +1,6 @@
 import { Constants, listOfBooks } from '../constants/Constants';
 import '../styles/DevelopersBook.css';
+import Cart from './Cart';
 
 const  DevelopersBook = () => {
 
@@ -18,6 +19,7 @@ const  DevelopersBook = () => {
     <>
       <div className='header' data-testid='header'>{Constants.HEADER}</div>
        {displayListOfAllBooks(listOfBooks)}
+       <Cart cartTestId='cart'/>
     </>
   );
 }
