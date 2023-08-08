@@ -77,6 +77,15 @@ describe('Cart works fine when', () => {
       expect(srcOfBook).toBe(book.imgUrl);
     });
   });
+
+  it('displays correct title of book added to cart', () => {
+    render(<Cart cartTestId='cart' cartItems={listOfBooks}/>)
+    listOfBooks.forEach(book =>{
+        const bookTitle = screen.getByTestId(`bookTitle${book.id}`);
+        const bookTitleText = bookTitle.textContent
+        expect(bookTitleText).toBe(`Book Title : ${book.title}`)
+    });
+  });
   
 });
 

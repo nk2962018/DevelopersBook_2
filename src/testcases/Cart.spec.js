@@ -19,4 +19,13 @@ describe('Cart works fine when', () => {
         })
     });
 
+    it('displays correct title of book added to cart', () => {
+        render(<Cart cartTestId='cart' cartItems={mockCartItems}/>)
+        mockCartItems.forEach(book =>{
+            const bookTitle = screen.getByTestId(`bookTitle${book.id}`);
+            const bookTitleText = bookTitle.textContent
+            expect(bookTitleText).toBe(`Book Title : ${book.title}`)
+        });
+    });
+
 });

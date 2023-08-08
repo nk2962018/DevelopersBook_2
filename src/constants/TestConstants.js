@@ -60,11 +60,13 @@ export const  mockCartHeader = {
 export const mockCartItems =[
     {
         id:1,
-        imgUrl:`${legacyCoder}`, 
+        title:'Book 1',
+        imgUrl:`${legacyCoder}`
     },
 
     {
         id:2,
-        imgUrl:`${tdd}`, 
+        title:'Book 2',
+        imgUrl:`${tdd}`
     }
 ]
