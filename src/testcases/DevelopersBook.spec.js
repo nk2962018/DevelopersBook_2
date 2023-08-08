@@ -61,7 +61,6 @@ describe('Developers Book works fine when', () => {
 
 });
 
-
 describe('Cart works fine when', () => {
   
   it('displays correct cart header', () => {
@@ -69,5 +68,15 @@ describe('Cart works fine when', () => {
     const cartHeader = screen.getByTestId('cart');
     expect(cartHeader.textContent).toBe(Constants.CART_HEADER);
   });
-
+   
+  it('displays correct image of book', () => {
+    render(<Cart cartTestId='cart' cartItems={listOfBooks}/>)
+    listOfBooks.forEach((book) => {
+      const bookImage = screen.getByTestId(`bookImg${book.id}`);
+      const srcOfBook = bookImage.getAttribute('src');
+      expect(srcOfBook).toBe(book.imgUrl);
+    });
+  });
+  
 });
+

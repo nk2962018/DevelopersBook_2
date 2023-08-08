@@ -1,6 +1,6 @@
 import { getByTestId, render, screen } from '@testing-library/react';
 import Cart from '../components/Cart';
-import { mockCartHeader } from '../constants/TestConstants';
+import { mockCartHeader, mockCartItems } from '../constants/TestConstants';
 
 describe('Cart works fine when', () => {
 
@@ -8,6 +8,15 @@ describe('Cart works fine when', () => {
         render(<Cart cartTestId='cart'/>)
         const cartHeader = screen.getByTestId('cart');
         expect(cartHeader).toHaveTextContent(mockCartHeader.CART_HEADER)  
+    });
+
+    it('displays correct image of book added to cart', () => {
+        render(<Cart cartTestId='cart' cartItems={mockCartItems}/>)
+        mockCartItems.forEach(book =>{
+            const bookImage = screen.getByTestId(`bookImg${book.id}`);
+            const srcOfBook = bookImage.getAttribute('src');
+            expect(srcOfBook).toBe(book.imgUrl)
+        })
     });
 
 });

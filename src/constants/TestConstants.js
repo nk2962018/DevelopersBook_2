@@ -56,3 +56,15 @@ export const listOfBooks = [
 export const  mockCartHeader = {
         CART_HEADER : 'Your Cart'
 }
+
+export const mockCartItems =[
+    {
+        id:1,
+        imgUrl:`${legacyCoder}`, 
+    },
+
+    {
+        id:2,
+        imgUrl:`${tdd}`, 
+    }
+]
