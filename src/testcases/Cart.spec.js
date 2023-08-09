@@ -1,40 +1,42 @@
-import { getByTestId, render, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import Cart from '../components/Cart';
 import { mockCartHeader, mockCartItems } from '../constants/TestConstants';
 
-describe('Cart works fine when', () => {
+describe('carts works fine when' , () => {
+    beforeEach(()  => {
+        render(<Cart cartTestId='cart' cartItems={mockCartItems}/>);
+    })
 
     it('displays correct header text', () => {
-        render(<Cart cartTestId='cart'/>)
         const cartHeader = screen.getByTestId('cart');
         expect(cartHeader).toHaveTextContent(mockCartHeader.CART_HEADER)  
     });
 
-    it('displays correct image of book added to cart', () => {
-        render(<Cart cartTestId='cart' cartItems={mockCartItems}/>)
-        mockCartItems.forEach(book =>{
-            const bookImage = screen.getByTestId(`bookImg${book.id}`);
-            const srcOfBook = bookImage.getAttribute('src');
-            expect(srcOfBook).toBe(book.imgUrl)
-        })
-    });
+    const testBookDetails = (book, detailType) => {
+       
+        const detailElement = screen.getByTestId(`book${detailType}${book.id}`);
+      
+        if (detailType === 'Img') {
+          const srcOfImage = detailElement.getAttribute('src');
+          expect(srcOfImage).toBe(book.imgUrl);
+        } 
+        else if (detailType == 'Title'){
+          const detailValue = detailElement.textContent;
+          expect(detailValue).toBe(`Book Title : ${book[detailType.toLowerCase()]}`);
+        }
+        else if (detailType == 'Price'){
+            const detailValue = detailElement.textContent;
+            expect(detailValue).toBe(`Price : ${book[detailType.toLowerCase()]}`);
+        }
+    };
 
-    it('displays correct title of book added to cart', () => {
-        render(<Cart cartTestId='cart' cartItems={mockCartItems}/>)
-        mockCartItems.forEach(book =>{
-            const bookTitle = screen.getByTestId(`bookTitle${book.id}`);
-            const bookTitleText = bookTitle.textContent
-            expect(bookTitleText).toBe(`Book Title : ${book.title}`)
+    it('displays correct details of books', () => {
+        mockCartItems.forEach((book) => {
+            testBookDetails(book, 'Img');
+            testBookDetails(book, 'Title');
+            testBookDetails(book, 'Price');
         });
-    });
-
-    it('displays correct price of book added to cart', () => {
-        render(<Cart cartTestId='cart' cartItems={mockCartItems}/>)
-        mockCartItems.forEach(book =>{
-            const bookPrice = screen.getByTestId(`bookPrice${book.id}`);
-            const bookPriceValue = bookPrice.textContent
-            expect(bookPriceValue).toBe(`Price : ${book.price}`)
-        });
-    });
-
+    });    
+      
 });
+    
