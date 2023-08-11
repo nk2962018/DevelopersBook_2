@@ -1,8 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import DevelopersBook from '../components/DevelopersBook';
 import { TestConstants, listOfBooks} from '../constants/TestConstants';
 import Cart from '../components/Cart';
-import { Constants } from '../constants/Constants';
 
 describe('Developers Book works fine when', () => {
     let books;
@@ -56,6 +55,15 @@ describe('Developers Book works fine when', () => {
       const bookImage = screen.getByTestId(`bookImg${book.id}`);
       const alt = bookImage.getAttribute('alt');
       expect(alt).toBe(book.title);
+    });
+  });
+
+  it("display correct book count upon clicking add to cart button", () => {
+    listOfBooks.forEach((book) => {
+      const addToCart = screen.getByTestId(`addToCart${book.id}`);
+      fireEvent.click(addToCart);
+      const bookCount = screen.getByTestId(`quantityOfEachItem${book.id}`);
+      expect(bookCount.textContent).toBe("1");
     });
   });
 

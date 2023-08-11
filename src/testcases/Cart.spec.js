@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import Cart from '../components/Cart';
-import { mockCartHeader, mockCartItems } from '../constants/TestConstants';
+import { TestConstants, mockCartHeader, mockCartItems } from '../constants/TestConstants';
 
 describe('carts works fine when' , () => {
     beforeEach(()  => {
@@ -34,9 +34,15 @@ describe('carts works fine when' , () => {
         mockCartItems.forEach((book) => {
             testBookDetails(book, 'Img');
             testBookDetails(book, 'Title');
-            testBookDetails(book, 'Price');
+            testBookDetails(book, 'Price');          
         });
-    });    
-      
+    });
+    
+    it('displays correct symbol of increment button', () => {
+        mockCartItems.forEach((book) => {
+            const increaseQuantityButton = screen.getByTestId(`incrementQuantity${book.id}`);
+            expect(increaseQuantityButton.textContent).toBe(TestConstants.INCREMENT_QUANTITY_BUTTON_SYMBOL);            
+        });
+    }); 
 });
     
