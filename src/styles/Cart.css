@@ -23,7 +23,7 @@
     font-weight: bold;
 }
 
-.incrementQunatity{
+.incrementQunatity, .decrementQuantity{
     background-color: white;
     padding:2px;
     width:30px;

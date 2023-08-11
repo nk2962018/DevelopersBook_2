@@ -44,5 +44,12 @@ describe('carts works fine when' , () => {
             expect(increaseQuantityButton.textContent).toBe(TestConstants.INCREMENT_QUANTITY_BUTTON_SYMBOL);            
         });
     }); 
+
+    it('displays correct symbol of decrement button', () => {
+        mockCartItems.forEach((book) => {
+            const decrementQuantityButton = screen.getByTestId(`decrementQuantity${book.id}`);
+            expect(decrementQuantityButton.textContent).toBe(TestConstants.DECREMENT_QUANTITY_BUTTON_SYMBOL);            
+        });
+    }); 
 });
     

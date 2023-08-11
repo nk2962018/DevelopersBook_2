@@ -33,6 +33,16 @@ const  DevelopersBook = () => {
     setCartItems(updatedCartItems);
   };
 
+  const decreaseQuantity = (item) => {
+      const updatedCartItems = cartItems.map(cartItem => {
+        if (cartItem.id === item.id) {
+          return { ...cartItem, quantity: cartItem.quantity - 1 };
+        }
+        return cartItem;
+      });
+      setCartItems(updatedCartItems);
+  };
+
   const displayListOfAllBooks = (books) => {
     return books.map(book => 
       <div className='book' data-testid='book'>
@@ -50,7 +60,7 @@ const  DevelopersBook = () => {
     <>
       <div className='header' data-testid='header'>{Constants.HEADER}</div>
        {displayListOfAllBooks(listOfBooks)}
-       <Cart cartTestId='cart' cartItems={cartItems} increaseQuantity={increaseQuantity} />
+       <Cart cartTestId='cart' cartItems={cartItems} increaseQuantity={increaseQuantity} decreaseQuantity={decreaseQuantity}/>
     </>
     );
 }
