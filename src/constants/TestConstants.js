@@ -24,7 +24,7 @@ export const listOfBooks = [
         id:1, 
         title:`${TestConstants.BOOK_TITLE_CLEAN_CODE}`, 
         imgUrl:`${cleanCode}`, 
-        price:`${TestConstants.PRICE_OF_EACH_BOOK}`
+        price:`${TestConstants.PRICE_OF_EACH_BOOK}`,
     }, 
 
     {   

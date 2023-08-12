@@ -1,10 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Cart from '../components/Cart';
 import { TestConstants, mockCartHeader, mockCartItems } from '../constants/TestConstants';
 
 describe('carts works fine when' , () => {
     beforeEach(()  => {
-        render(<Cart cartTestId='cart' cartItems={mockCartItems}/>);
+        render(<Cart cartTestId='cart' cartItems={mockCartItems} decreaseQuantity={() =>{}} increaseQuantity={() =>{}}/>);
     })
 
     it('displays correct header text', () => {
@@ -50,6 +50,34 @@ describe('carts works fine when' , () => {
             const decrementQuantityButton = screen.getByTestId(`decrementQuantity${book.id}`);
             expect(decrementQuantityButton.textContent).toBe(TestConstants.DECREMENT_QUANTITY_BUTTON_SYMBOL);            
         });
+    });
+    
+    it('displays correct quantity of item on clicking  decrement button', () => {
+        mockCartItems.forEach((book) => {
+            const decrementQuantityButton = screen.getByTestId(`decrementQuantity${book.id}`);
+           // expect(decrementQuantityButton.textContent).toBe(TestConstants.DECREMENT_QUANTITY_BUTTON_SYMBOL); 
+           fireEvent.click(decrementQuantityButton);
+           const quantityOfEachItem = screen.getByTestId(`quantityOfEachItem${book.id}`);
+          
+           const quantity = quantityOfEachItem.textContent;
+          
+           expect(quantity).toBe("0")
+
+        });
     }); 
+
+    it('displays correct quantity of item on clicking  increment button', () => {
+        mockCartItems.forEach((book) => {
+            const incrementQuantityButton = screen.getByTestId(`incrementQuantity${book.id}`);
+           // expect(decrementQuantityButton.textContent).toBe(TestConstants.DECREMENT_QUANTITY_BUTTON_SYMBOL); 
+           fireEvent.click(incrementQuantityButton);
+           const quantityOfEachItem = screen.getByTestId(`quantityOfEachItem${book.id}`);
+           
+           const quantity = quantityOfEachItem.textContent;
+          
+          expect(quantity).toBe("2")
+
+        });
+    });
 });
     
