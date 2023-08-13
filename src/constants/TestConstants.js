@@ -14,7 +14,8 @@ export const TestConstants = {
     BOOK_TITLE_TDD : 'TDD by example',
     BOOK_TITLE_LEGACY_CODE : 'Working effectively with legacy Code',
     PRICE_OF_EACH_BOOK : '50 Euro',
-    CART_HEADER : 'Your Cart'
+    CART_HEADER : 'Your Cart',
+    INCREMENT_QUANTITY_BUTTON_SYMBOL : '+'
 };
 
 export const listOfBooks = [
@@ -63,13 +64,15 @@ export const mockCartItems =[
         id:1,
         title:'Book 1',
         imgUrl:`${legacyCoder}`, 
-        price:'10'
+        price:'10',
+        quantity:0
     },
 
     {
         id:2,
         title:'Book 2',
         imgUrl:`${tdd}`, 
-        price:'10'
+        price:'10',
+        quantity:0
     }
 ]

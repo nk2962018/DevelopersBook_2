@@ -1,8 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import DevelopersBook from '../components/DevelopersBook';
-import { TestConstants, listOfBooks} from '../constants/TestConstants';
+import { TestConstants, listOfBooks, mockCartItems} from '../constants/TestConstants';
 import Cart from '../components/Cart';
-import { Constants } from '../constants/Constants';
 
 describe('Developers Book works fine when', () => {
     let books;
@@ -56,6 +55,32 @@ describe('Developers Book works fine when', () => {
       const bookImage = screen.getByTestId(`bookImg${book.id}`);
       const alt = bookImage.getAttribute('alt');
       expect(alt).toBe(book.title);
+    });
+  });
+
+  it("display correct book count upon clicking add to cart button", () => {
+    listOfBooks.forEach((book) => {
+      const addToCart = screen.getByTestId(`addToCart${book.id}`);
+      fireEvent.click(addToCart);
+      const bookCount = screen.getByTestId(`quantityOfEachItem${book.id}`);
+      expect(bookCount.textContent).toBe("1");
+    });
+  });
+
+  it("displays correct quantity of item on clicking  increment button from development books for multiple items", () => {
+    mockCartItems.forEach((item) => {
+      const addToCart = screen.getByTestId(`addToCart${item.id}`);
+      fireEvent.click(addToCart);
+      const incrementQuantityButton = screen.getByTestId(
+        `incrementQuantity${item.id}`
+      );
+      fireEvent.click(incrementQuantityButton);
+      fireEvent.click(incrementQuantityButton);
+      const quantityOfEachItem = screen.getByTestId(
+        `quantityOfEachItem${item.id}`
+      );
+      const quantity = quantityOfEachItem.textContent;
+      expect(quantity).toBe("3");
     });
   });
 

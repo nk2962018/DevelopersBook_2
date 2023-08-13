@@ -14,7 +14,8 @@ export const Constants = {
     BOOK_TITLE_TDD : 'TDD by example',
     BOOK_TITLE_LEGACY_CODE : 'Working effectively with legacy Code',
     PRICE_OF_EACH_BOOK : '50 Euro',
-    CART_HEADER : 'Your Cart'
+    CART_HEADER : 'Your Cart',
+    INCREMENT_QUANTITY_BUTTON_SYMBOL : '+'
 };
 
 export const listOfBooks = [

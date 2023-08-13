@@ -8,8 +8,30 @@ const  DevelopersBook = () => {
   const [cartItems, setCartItems] = useState([]);
 
   const addBookToCart = (book) => {
-    setCartItems([...cartItems,book])
-  }
+    const existingCartItem = cartItems.find(item => item.id === book.id);
+
+    if (existingCartItem) {
+      const updatedCartItems = cartItems.map(item => {
+        if (item.id === book.id) {
+          return { ...item, quantity: item.quantity + 1 };
+        }
+        return item;
+      });
+      setCartItems(updatedCartItems);
+    } else {
+      setCartItems([...cartItems, { ...book, quantity: 1 }]);
+    }
+  };
+
+  const increaseQuantity = (item) => {
+    const updatedCartItems = cartItems.map(cartItem => {
+      if (cartItem.id === item.id) {
+        return { ...cartItem, quantity: cartItem.quantity + 1 };
+      }
+      return cartItem;
+    });
+    setCartItems(updatedCartItems);
+  };
 
   const displayListOfAllBooks = (books) => {
     return books.map(book => 
@@ -28,9 +50,9 @@ const  DevelopersBook = () => {
     <>
       <div className='header' data-testid='header'>{Constants.HEADER}</div>
        {displayListOfAllBooks(listOfBooks)}
-       <Cart cartTestId='cart' cartItems={cartItems}/>
+       <Cart cartTestId='cart' cartItems={cartItems} increaseQuantity={increaseQuantity}/>
     </>
-  );
+    );
 }
 
 export default DevelopersBook;

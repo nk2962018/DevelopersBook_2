@@ -1,10 +1,10 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import Cart from '../components/Cart';
-import { mockCartHeader, mockCartItems } from '../constants/TestConstants';
+import { TestConstants, mockCartHeader, mockCartItems } from '../constants/TestConstants';
 
 describe('carts works fine when' , () => {
     beforeEach(()  => {
-        render(<Cart cartTestId='cart' cartItems={mockCartItems}/>);
+        render(<Cart cartTestId='cart' cartItems={mockCartItems} increaseQuantity={() => {}}/>);
     })
 
     it('displays correct header text', () => {
@@ -34,9 +34,29 @@ describe('carts works fine when' , () => {
         mockCartItems.forEach((book) => {
             testBookDetails(book, 'Img');
             testBookDetails(book, 'Title');
-            testBookDetails(book, 'Price');
+            testBookDetails(book, 'Price');          
         });
-    });    
-      
+    });
+    
+    it('displays correct symbol of increment button', () => {
+        mockCartItems.forEach((book) => {
+            const increaseQuantityButton = screen.getByTestId(`incrementQuantity${book.id}`);
+            expect(increaseQuantityButton.textContent).toBe(TestConstants.INCREMENT_QUANTITY_BUTTON_SYMBOL);            
+        });
+    }); 
+
+    it("displays correct quantity of item on clicking  increment button", () => {
+        mockCartItems.forEach((book) => {
+          const incrementQuantityButton = screen.getByTestId(
+            `incrementQuantity${book.id}`
+          );
+          fireEvent.click(incrementQuantityButton);
+          const quantityOfEachItem = screen.getByTestId(
+            `quantityOfEachItem${book.id}`
+          );
+          const quantity = quantityOfEachItem.textContent;
+          expect(quantity).toBe(JSON.stringify(book.quantity));
+        });
+      });
 });
     
