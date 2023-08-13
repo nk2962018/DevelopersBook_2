@@ -84,6 +84,18 @@ describe('Developers Book works fine when', () => {
     });
   });
 
+  it("displays correct quantity of item on clicking  decrement button in development books for multiple items", () => {
+    mockCartItems.forEach((item) => {
+      const addToCart = screen.getByTestId(`addToCart${item.id}`);
+      fireEvent.click(addToCart);
+      const decrementQuantityButton = screen.getByTestId(`decrementQuantity${item.id}`);
+      fireEvent.click(decrementQuantityButton);
+      const quantityOfEachItem = screen.getByTestId(`quantityOfEachItem${item.id}`);
+      const quantity = quantityOfEachItem.textContent;
+      expect(quantity).toBe("0");
+    });
+  });
+
 });
 
 describe('Cart works fine when', () => {

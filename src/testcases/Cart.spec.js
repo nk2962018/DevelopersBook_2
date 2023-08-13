@@ -4,7 +4,13 @@ import { TestConstants, mockCartHeader, mockCartItems } from '../constants/TestC
 
 describe('carts works fine when' , () => {
     beforeEach(()  => {
-        render(<Cart cartTestId='cart' cartItems={mockCartItems} increaseQuantity={() => {}}/>);
+        render(
+            <Cart 
+                cartTestId='cart' 
+                cartItems={mockCartItems} 
+                increaseQuantity={() => {}}
+                decreaseQuantity={() => {}}
+            />);
     })
 
     it('displays correct header text', () => {
@@ -58,5 +64,23 @@ describe('carts works fine when' , () => {
           expect(quantity).toBe(JSON.stringify(book.quantity));
         });
       });
+
+      it('displays correct symbol of decrement button', () => {
+        mockCartItems.forEach((book) => {
+            const decrementQuantityButton = screen.getByTestId(`decrementQuantity${book.id}`);
+            expect(decrementQuantityButton.textContent).toBe(TestConstants.DECREMENT_QUANTITY_BUTTON_SYMBOL);            
+        });
+    });
+
+    it("displays correct quantity of item on clicking  decrement button", () => {
+        mockCartItems.forEach((book) => {
+          const decrementQuantityButton = screen.getByTestId(`decrementQuantity${book.id}`);
+          fireEvent.click(decrementQuantityButton);
+          const quantityOfEachItem = screen.getByTestId(`quantityOfEachItem${book.id}`);
+          const quantity = quantityOfEachItem.textContent;
+          expect(quantity).toBe("0");
+        });
+    });
+
 });
     

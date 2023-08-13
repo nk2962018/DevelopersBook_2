@@ -15,7 +15,8 @@ export const TestConstants = {
     BOOK_TITLE_LEGACY_CODE : 'Working effectively with legacy Code',
     PRICE_OF_EACH_BOOK : '50 Euro',
     CART_HEADER : 'Your Cart',
-    INCREMENT_QUANTITY_BUTTON_SYMBOL : '+'
+    INCREMENT_QUANTITY_BUTTON_SYMBOL : '+',
+    DECREMENT_QUANTITY_BUTTON_SYMBOL : '-'
 };
 
 export const listOfBooks = [
