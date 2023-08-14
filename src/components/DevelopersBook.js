@@ -34,6 +34,10 @@ const  DevelopersBook = () => {
   };
 
   const decreaseQuantity = (item) => {
+    if (item.quantity === 1) {
+      const updatedCartItems = cartItems.filter(cartItem => cartItem.id !== item.id);
+      setCartItems(updatedCartItems);
+    } else {
       const updatedCartItems = cartItems.map(cartItem => {
         if (cartItem.id === item.id) {
           return { ...cartItem, quantity: cartItem.quantity - 1 };
@@ -41,6 +45,7 @@ const  DevelopersBook = () => {
         return cartItem;
       });
       setCartItems(updatedCartItems);
+    }
   };
 
   const displayListOfAllBooks = (books) => {

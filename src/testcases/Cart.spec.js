@@ -72,15 +72,21 @@ describe('carts works fine when' , () => {
         });
     });
 
-    it("displays correct quantity of item on clicking  decrement button", () => {
+    it("removes the item from cart when its decrement from 1", () => {
         mockCartItems.forEach((book) => {
-          const decrementQuantityButton = screen.getByTestId(`decrementQuantity${book.id}`);
-          fireEvent.click(decrementQuantityButton);
+          const incrementQuantityButton = screen.getByTestId(`incrementQuantity${book.id}`);
+          fireEvent.click(incrementQuantityButton);
+          
           const quantityOfEachItem = screen.getByTestId(`quantityOfEachItem${book.id}`);
           const quantity = quantityOfEachItem.textContent;
-          expect(quantity).toBe("0");
+          console.log(parseInt(quantity+1))
+          const decrementQuantityButton = screen.getByTestId(`decrementQuantity${book.id}`);
+          fireEvent.click(decrementQuantityButton);
+          const cartItem = screen.queryByTestId(/^cartItem/);
+          expect(cartItem).toBeNull(); 
+          
         });
-    });
+      });
 
 });
     
